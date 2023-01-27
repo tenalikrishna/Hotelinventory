@@ -1,10 +1,15 @@
 <h1>welcome to {{hotelname}}</h1>
 <app-header></app-header>
+{{rooms$}}
 <div [hidden]="hiderooms">
 Number of Rooms:
 <div [innerText]="numberofrooms"></div>
 </div>
-
+<router-outlet></router-outlet>
+<h1>
+  <!-- {{getErrors$| async}} -->
+ No of rooms {{roomCount$ | async}}
+</h1>
 <div>
     <button type="button" class="btn btn-default"(click)="addRoom()">
       Add room
@@ -13,8 +18,11 @@ Number of Rooms:
 <div *ngIf="selectedroom">
     {{selectedroom| json}}
 </div>
-<div *ngIf ="hiderooms">
-  <app-rooms-list [rooms]="roomslist" 
+<div *ngIf ="rooms$ |async">
+  <app-rooms-list [rooms]="rooms$ | async" 
   (SelectedRoom)="selectRoom($event)" [title]="'Room List'"></app-rooms-list> 
 </div>
-<button (click)="toogle()">Toogle</button>
+<button mat-raised-button color="primary" (click)="toogle()">Toogle</button>
+<button mat-raised-button color="primary" (click)="editRoom()">Editroom</button>
+<button  mat-raised-button color="primary" (click)="deleteRoom()">Deleteroom</button>
+<h1>{{totalBytes}}loaded</h1>

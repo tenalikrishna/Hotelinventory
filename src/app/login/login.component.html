@@ -1,0 +1,32 @@
+<form>
+  <div class="form-group">
+    <input
+      appEmailvalidator
+      #emailControl="ngModel"
+      type="email"
+      class="form-control"
+      name="name"
+      [(ngModel)]="email"
+      placeholder="please enter username "
+    />
+    <div>
+      {{ emailControl.errors | json }}
+      {{emailControl.value | json }}
+    </div>
+  </div>
+  <div appEmailvalidator class="form-group">
+    <input
+      appEmailvalidator
+      type="password"
+      class="form-control"
+      name="name"
+      [(ngModel)]="password"
+      placeholder="please enter password "
+    />
+  </div>
+  <div appHover class="form-group">
+    <button type="button"  mat-raised-button class="btn btn-default" (click)="login()">
+      Login
+    </button>
+  </div>
+</form>

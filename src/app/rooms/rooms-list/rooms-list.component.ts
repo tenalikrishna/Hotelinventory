@@ -11,7 +11,7 @@ export class RoomsListComponent implements OnChanges {
 ngOnChanges(changes: SimpleChanges): void {
   console.log(changes);
 }
-@Input() rooms: RoomList[]=[];
+@Input() rooms: RoomList[]|null=[] ;
 @Input() title:string='';
 
 @Output() SelectedRoom = new EventEmitter<RoomList>();
